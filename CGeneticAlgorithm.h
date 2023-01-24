@@ -21,11 +21,14 @@ class CGeneticAlgorithm{
     public:
         CGeneticAlgorithm(int iPopulationSize, double dCrossProbability, double dMutationProbability, CKnapsackProblem* cKnapsackProblem);
         ~CGeneticAlgorithm();
+        void vSetKnapsack(CKnapsackProblem* knapsack);
         void vCalculateIterations(int iIterations);
         void vCalculateMilliseconds(int iMillisecondsPassed);
         void vCalculateCount(int iCalculationCount);
         void vGeneratePopulation();
+        void vClear();
         CIndividual cGetBestSolution();
+
 };
 
 #endif

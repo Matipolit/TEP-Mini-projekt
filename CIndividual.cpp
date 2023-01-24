@@ -53,31 +53,16 @@ int CIndividual::iFitness(CKnapsackProblem* knapsack){
 }
 
 void CIndividual::vMutate(double dMutationChance){
-    /*
-    std::cout << "Genotype before mut: ";
-    vPrintGenotype();
-    */
-    for(int i = 0; i<i_genotype_length; i++){
+   for(int i = 0; i<i_genotype_length; i++){
         double randNum = (rand() % 1001)/(double)1000;
         if(randNum<dMutationChance){        
             i_genotype[i] = abs(i_genotype[i]-1);
         }
     }
-    /*
-    std::cout << "Genotype after mut: ";
-    vPrintGenotype();
-    */
 }
 
 std::pair<CIndividual, CIndividual> CIndividual::cross(CIndividual* mate){
     int crossPoint = rand() % 3 + 1;
-    /*
-    std::cout << "Cross number: " << crossPoint << "\n";
-    std::cout << "My genotype: \n";
-    vPrintGenotype();
-    std::cout << "My mate's genotype: \n";
-    mate->vPrintGenotype();    
-    */
     int child1[i_genotype_length];
     int child2[i_genotype_length];
     for(int i = 0; i<i_genotype_length; i++){
@@ -89,11 +74,6 @@ std::pair<CIndividual, CIndividual> CIndividual::cross(CIndividual* mate){
             child2[i] = i_genotype[i];
         }
     }
-    /*
-    std::cout << "Crossed genotypes:\n";
-    vPrintArray(child1, i_genotype_length);
-    vPrintArray(child2, i_genotype_length);
-    */
     std::pair<CIndividual, CIndividual> children(CIndividual(i_genotype_length, child1), CIndividual(i_genotype_length, child2));
     return children;
 }
